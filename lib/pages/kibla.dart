@@ -62,7 +62,7 @@ class _kiblaState extends State<kibla> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -71,19 +71,20 @@ class _kiblaState extends State<kibla> {
 
         // if direction is null, then device does not support this sensor
         // show error message
-        if (direction == null)
-          return Center(
+        if (direction == null) {
+          return const Center(
             child: Text("Device does not have sensors !"),
           );
+        }
 
         return Material(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           elevation: 4.0,
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             alignment: Alignment.center,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
             child: Transform.rotate(

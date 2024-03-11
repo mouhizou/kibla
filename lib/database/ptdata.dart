@@ -208,7 +208,7 @@ class Hijri {
   final HijriMonth month;
   final String year;
   final Designation designation;
-  final List<dynamic> holidays;
+  final List<String> holidays;
 
   Hijri({
     required this.date,
@@ -233,7 +233,7 @@ class Hijri {
     month: HijriMonth.fromJson(json["month"]),
     year: json["year"],
     designation: Designation.fromJson(json["designation"]),
-    holidays: List<dynamic>.from(json["holidays"].map((x) => x)),
+    holidays: List<String>.from(json["holidays"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
@@ -326,8 +326,8 @@ class Meta {
   String toRawJson() => json.encode(toJson());
 
   factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-    latitude: json["latitude"].toDouble(),
-    longitude: json["longitude"].toDouble(),
+    latitude: json["latitude"]?.toDouble(),
+    longitude: json["longitude"]?.toDouble(),
     timezone: json["timezone"],
     method: Method.fromJson(json["method"]),
     latitudeAdjustmentMethod: json["latitudeAdjustmentMethod"],
@@ -394,8 +394,8 @@ class Location {
   String toRawJson() => json.encode(toJson());
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-    latitude: json["latitude"].toDouble(),
-    longitude: json["longitude"].toDouble(),
+    latitude: json["latitude"]?.toDouble(),
+    longitude: json["longitude"]?.toDouble(),
   );
 
   Map<String, dynamic> toJson() => {
@@ -405,8 +405,8 @@ class Location {
 }
 
 class Params {
-  final int fajr;
-  final int isha;
+  final double fajr;
+  final double isha;
 
   Params({
     required this.fajr,
@@ -418,8 +418,8 @@ class Params {
   String toRawJson() => json.encode(toJson());
 
   factory Params.fromJson(Map<String, dynamic> json) => Params(
-    fajr: json["Fajr"],
-    isha: json["Isha"],
+    fajr: json["Fajr"]?.toDouble(),
+    isha: json["Isha"]?.toDouble(),
   );
 
   Map<String, dynamic> toJson() => {
